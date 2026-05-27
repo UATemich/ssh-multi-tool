@@ -9,7 +9,7 @@ source.include_exts = py,png,jpg,jpeg,kv,atlas,ttf,json
 
 version = 1.0
 
-requirements = python3,kivy,kivymd,paramiko,cryptography,bcrypt,pynacl
+requirements = python3,kivy,kivymd
 
 orientation = portrait
 fullscreen = 0
