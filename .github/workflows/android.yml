@@ -50,8 +50,7 @@ jobs:
           pip install cython==0.29.33
           pip install buildozer==1.5.0
 
-          pip install \
-            python-for-android==2024.01.21
+          pip install python-for-android==2023.09.16
 
       - name: Accept Android licenses
         run: |
