@@ -14,20 +14,24 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      - name: Install system packages
+      - name: Install system dependencies
         run: |
           sudo apt update
+
           sudo apt install -y \
             zip unzip openjdk-17-jdk \
             autoconf automake libtool pkg-config \
             zlib1g-dev libncurses5-dev \
-            libtinfo5 cmake libffi-dev libssl-dev
+            libtinfo5 cmake libffi-dev libssl-dev \
+            build-essential ccache git \
+            python3-pip
 
-      - name: Install Buildozer
+      - name: Install Python packages
         run: |
           python -m pip install --upgrade pip
+
           pip install cython==0.29.33
           pip install buildozer==1.5.0
           pip install python-for-android==2024.01.21
@@ -38,9 +42,17 @@ jobs:
           touch ~/.android/repositories.cfg
           yes | sdkmanager --licenses || true
 
+      - name: Clean caches
+        run: |
+          rm -rf .buildozer
+          rm -rf ~/.buildozer
+          rm -rf build
+          rm -rf bin
+
       - name: Build APK
         run: |
-          buildozer android debug
+          buildozer android clean
+          buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
