@@ -14,8 +14,6 @@ requirements = python3==3.10.11,kivy==2.2.1,kivymd==1.1.1,paramiko,cryptography,
 orientation = portrait
 fullscreen = 0
 
-# ---------- ANDROID ----------
-
 android.api = 33
 android.minapi = 24
 android.sdk = 33
@@ -29,23 +27,20 @@ android.permissions = INTERNET
 
 android.release_artifact = apk
 
-# ---------- PYTHON-FOR-ANDROID ----------
+# КРИТИЧНО
+p4a.branch = master
 
-p4a.branch = develop
+# КРИТИЧНО
+p4a.fork = kivy
 
+# КРИТИЧНО
+p4a.local_recipes =
+
+# КРИТИЧНО
 osx.python_version = 3
-
-# ---------- BUILD ----------
 
 build_dir = .buildozer
 
 log_level = 2
 
 warn_on_root = 1
-
-# ---------- OPTIONAL ----------
-
-# icon.filename = %(source.dir)s/data/icon.png
-# presplash.filename = %(source.dir)s/data/presplash.png
-
-# ---------- END ----------
