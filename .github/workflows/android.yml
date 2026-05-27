@@ -5,11 +5,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -17,33 +16,21 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install system dependencies
+      - name: Install system packages
         run: |
           sudo apt update
-
           sudo apt install -y \
-            git \
-            zip \
-            unzip \
-            openjdk-17-jdk \
-            python3-pip \
-            autoconf \
-            libtool \
-            pkg-config \
-            zlib1g-dev \
-            libncurses5-dev \
-            libncursesw5-dev \
-            cmake \
-            libffi-dev \
-            libssl-dev \
-            build-essential \
-            wget \
-            curl
+            zip unzip openjdk-17-jdk \
+            autoconf automake libtool pkg-config \
+            zlib1g-dev libncurses5-dev \
+            libtinfo5 cmake libffi-dev libssl-dev
 
       - name: Install Buildozer
         run: |
-          pip install --upgrade pip
-          pip install cython buildozer
+          python -m pip install --upgrade pip
+          pip install cython==0.29.33
+          pip install buildozer==1.5.0
+          pip install python-for-android==2024.01.21
 
       - name: Accept Android licenses
         run: |
@@ -57,7 +44,6 @@ jobs:
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
-
         with:
           name: android-apk
           path: bin/*.apk
