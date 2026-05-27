@@ -9,7 +9,7 @@ source.include_exts = py,png,jpg,jpeg,kv,atlas,ttf,json
 
 version = 1.0
 
-requirements = python3==3.10.11,kivy==2.2.1,kivymd==1.1.1,paramiko,cryptography,bcrypt,pynacl
+requirements = python3,kivy,kivymd,paramiko,cryptography,bcrypt,pynacl
 
 orientation = portrait
 fullscreen = 0
@@ -27,16 +27,6 @@ android.permissions = INTERNET
 
 android.release_artifact = apk
 
-# КРИТИЧНО
-p4a.branch = master
-
-# КРИТИЧНО
-p4a.fork = kivy
-
-# КРИТИЧНО
-p4a.local_recipes =
-
-# КРИТИЧНО
 osx.python_version = 3
 
 build_dir = .buildozer
