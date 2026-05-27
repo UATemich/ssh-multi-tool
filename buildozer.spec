@@ -10,7 +10,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 1.0
 
-requirements = python3,kivy,kivymd,paramiko,cryptography,bcrypt,pynacl
+requirements = python3==3.10.11,kivy==2.3.0,kivymd==1.1.1,paramiko,cryptography,bcrypt,pynacl
 
 orientation = portrait
 
