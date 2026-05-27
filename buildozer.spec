@@ -1,39 +1,51 @@
 [app]
 
-title = SSH Multi-Tool
-
+title = SSH Multi Tool
 package.name = sshmultitool
-package.domain = local
+package.domain = org.temich
 
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,jpeg,kv,atlas,ttf,json
 
 version = 1.0
 
-requirements = python3,kivy==2.3.0,kivymd==1.1.1,paramiko
+requirements = python3==3.10.11,kivy==2.2.1,kivymd==1.1.1,paramiko,cryptography,bcrypt,pynacl
 
 orientation = portrait
-
 fullscreen = 0
 
-android.permissions = INTERNET,WAKE_LOCK
+# ---------- ANDROID ----------
 
 android.api = 33
 android.minapi = 24
 android.sdk = 33
 android.ndk = 25b
 
-android.accept_sdk_license = True
-
 android.archs = arm64-v8a
 
-p4a.branch = master
+android.accept_sdk_license = True
 
-[buildozer]
+android.permissions = INTERNET
+
+android.release_artifact = apk
+
+# ---------- PYTHON-FOR-ANDROID ----------
+
+p4a.branch = develop
+
+osx.python_version = 3
+
+# ---------- BUILD ----------
+
+build_dir = .buildozer
 
 log_level = 2
+
 warn_on_root = 1
-p4a.branch = master
-android.ndk = 25b
-android.api = 33
-android.minapi = 24
+
+# ---------- OPTIONAL ----------
+
+# icon.filename = %(source.dir)s/data/icon.png
+# presplash.filename = %(source.dir)s/data/presplash.png
+
+# ---------- END ----------
